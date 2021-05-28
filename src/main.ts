@@ -2,15 +2,14 @@ import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import * as DotEnv from 'dotenv';
 
-
 import { AppModule } from './app.module';
 
 async function bootstrap() {
   DotEnv.config();
   const app = await NestFactory.create(AppModule);
   const options = new DocumentBuilder()
-    .setTitle('GojiRx API Documentation')
-    .setDescription('This documentation is for GojiRx')
+    .setTitle('API Documentation')
+    .setDescription('This documentation is for Student Management App')
     .setVersion('1.0')
     .addBearerAuth()
     .build();
