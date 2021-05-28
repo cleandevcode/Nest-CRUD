@@ -1,0 +1,42 @@
+
+version: '3.1'
+
+services:
+
+  db_postgres:
+    image: postgres
+    restart: always
+    volumes:
+      - /Users/example/path:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: your-postgres-username
+      POSTGRES_PASSWORD: your-postgres-password
+      POSTGRES_DB: your-postgres-db-name
+    ports: 
+      - "5432:5432"
+
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - /Users/example/path/redis:/data
+    entrypoint: redis-server --appendonly yes
+    restart: always
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+  minio:
+    image: minio/minio
+    volumes:
+      - /Users/example/path/minio:/data
+    ports:
+      - "9000:9000"
+    environment:
+      MINIO_ACCESS_KEY: minio
+      MINIO_SECRET_KEY: minio123
+    command: server /data
