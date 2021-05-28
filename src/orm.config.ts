@@ -2,7 +2,6 @@ import { ConnectionOptions } from 'typeorm';
 import * as PostgresConnectionStringParser from 'pg-connection-string';
 import * as DotEnv from 'dotenv';
 
-import { Subscriber } from './core/entity-subscribers/subscriber';
 
 DotEnv.config();
 const connectionOptions = PostgresConnectionStringParser.parse(
@@ -17,7 +16,6 @@ const config: ConnectionOptions = {
   password: connectionOptions.password,
   database: connectionOptions.database,
   entities: [__dirname + '/**/*.entity{.ts,.js}'],
-  subscribers: [Subscriber],
 
   // We are using migrations, synchronize should be set to false.
   synchronize: true,

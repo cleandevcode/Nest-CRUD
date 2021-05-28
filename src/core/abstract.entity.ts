@@ -7,27 +7,21 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
+  PrimaryGeneratedColumn,
 } from 'typeorm';
 
 import { AbstractDto } from './dtos/AbstractDto';
-import { generateRandomId } from './utils/string.util';
 
 export abstract class AbstractEntity<T extends AbstractDto = AbstractDto> {
-  @ApiProperty({ type: 'string' })
-  @PrimaryColumn()
-  id: string;
+    @PrimaryGeneratedColumn('uuid')
+    id: string;
 
-  @CreateDateColumn()
-  createdAt!: Date;
+    @CreateDateColumn()
+    createdAt!: Date;
 
-  @UpdateDateColumn()
-  updatedAt!: Date;
+    @UpdateDateColumn()
+    updatedAt!: Date;
 
-  @DeleteDateColumn()
-  deletedAt?: Date;
-
-  @BeforeInsert()
-  private beforeInsert() {
-    this.id = generateRandomId(15);
-  }
+    @DeleteDateColumn()
+    deletedAt?: Date;
 }

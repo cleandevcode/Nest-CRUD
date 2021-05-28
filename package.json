@@ -1,6 +1,6 @@
 {
-  "name": "backend-api",
-  "version": "0.0.1",
+  "name": "aurora-api",
+  "version": "0.0.32",
   "description": "",
   "author": "",
   "private": true,
@@ -32,6 +32,7 @@
     "@nestjs/swagger": "^4.7.12",
     "@nestjs/typeorm": "^7.1.5",
     "axios": "^0.21.1",
+    "bcryptjs": "^2.4.3",
     "class-transformer": "^0.3.2",
     "class-validator": "^0.13.1",
     "crypto-random-string": "^3.3.1",

@@ -8,11 +8,7 @@ import { StudentModule } from './student/student.module';
 import { CourseModule } from './course/course.module';
 
 @Module({
-  imports: [
-    TypeOrmModule.forRoot(OrmConfig),
-    StudentModule,
-    CourseModule,
-  ],
+  imports: [TypeOrmModule.forRoot(OrmConfig), StudentModule, CourseModule],
   controllers: [AppController],
 })
 export class AppModule {}
