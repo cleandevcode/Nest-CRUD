@@ -35,14 +35,9 @@ export class CourseService {
   }
 
   async findCoursesByStudent(studentId: string): Promise<Course[]> {
-    return this.courseRepository
-      .createQueryBuilder('course')
-      .leftJoinAndSelect(
-        'course.student',
-        'student',
-        'student.id = :studentId',
-        { studentId },
-      )
-      .getMany();
+    return this.courseRepository.find({
+      relations: ['student'],
+      where: { student: { id: studentId } },
+    });
   }
 }

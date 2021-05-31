@@ -2,7 +2,6 @@ import { ConnectionOptions } from 'typeorm';
 import * as PostgresConnectionStringParser from 'pg-connection-string';
 import * as DotEnv from 'dotenv';
 
-
 DotEnv.config();
 const connectionOptions = PostgresConnectionStringParser.parse(
   process.env.DATABASE_URL,
@@ -16,7 +15,9 @@ const config: ConnectionOptions = {
   password: connectionOptions.password,
   database: connectionOptions.database,
   entities: [__dirname + '/**/*.entity{.ts,.js}'],
-
+  ssl: {
+    rejectUnauthorized: false,
+  },
   // We are using migrations, synchronize should be set to false.
   synchronize: true,
 

@@ -16,6 +16,6 @@ async function bootstrap() {
   app.enableCors({ origin: '*' });
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('doc', app, document);
-  await app.listen(process.env.PORT || 8085);
+  await app.listen(process.env.PORT || 3000);
 }
 bootstrap().then();
